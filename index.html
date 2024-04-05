@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Anime-quiz</title>
+  </head>
+  <body>
+    <div
+      class="bg-gray-400 text-center flex flex-col justify-center items-center"
+    >
+      <div class="font-bold text-4xl my-9">
+        Can You Guess the 20 <br />
+        Most Popular Anime Characters?
+      </div>
+
+      <div
+        class="flex items-center justify-center sticky top-0 bg-slate-500 w-[700px] h-20 rounded-sm"
+      >
+        <img src="./boji.png" alt="" class="w-16 h-16 rounded-full mt-2 mr-2" />
+
+        <input
+          type="text"
+          class="display bg-gray-900 text-white outline-none ml-2 p-4 rounded-md max-w-xl w-72 mt-2"
+          placeholder="Type your guess here"
+        />
+        <button
+          class="bg-gray-900 text-white outline-none ml-2 p-4 rounded-md mt-2 transition duration-300 ease-in-out transform hover:scale-110"
+          onclick="inputChar()"
+        >
+          Guess
+        </button>
+        <div class="flex item-center justify-center flex-row">
+          <div class="text-xl font-medium ml-5 mx-auto uppercase">
+            Score: <br /><span id="score"></span>/20
+          </div>
+          <div class="text-xl font-medium ml-5 uppercase">
+            timer : <br /><span id="timer" class="text-xl"></span>
+          </div>
+        </div>
+      </div>
+      <div class="border w-full max-w-[700px] mt-2">
+        <table class="w-full bg-transparent border-collapse table-auto">
+          <thead class="sticky top-20">
+            <tr>
+              <th
+                class="px-4 bg-gray-50 text-gray-700 py-3 text-base font-bold text-center uppercase border-l-0 border-r-0 whitespace-nowrap"
+              >
+                Ranking
+              </th>
+              <th
+                class="px-4 bg-gray-50 text-gray-700 py-3 text-base font-bold text-center uppercase border-l-0 border-r-0 whitespace-nowrap"
+              >
+                Anime Character
+              </th>
+              <th
+                class="px-4 bg-gray-50 text-gray-700 py-3 text-base font-bold text-center uppercase border-l-0 border-r-0 whitespace-nowrap"
+              >
+                Anime Name
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-lg text-gray-900 font-medium whitespace-nowrap p-4 text-center"
+              >
+                1
+              </th>
+              <td
+                class="anime-char text-transparent text-center border-t-0 px-4 text-lg font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Luffy
+              </td>
+              <td
+                class="border-t-0 px-4 text-lg font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                One Piece
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                2
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Goku
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Dragon Ball
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                3
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Naruto Uzumaki
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Naruto
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                4
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Levi Ackerman
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Attack on Titan
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                5
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Light Yagami
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Death Note
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                6
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Edward Elric
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Fullmetal Alchemist
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                7
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Eren Yeager
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Attack on Titan
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                8
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Monkey D. Dragon
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                One Piece
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                9
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Meliodas
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                The Seven Deadly Sins
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                10
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Roronoa Zoro
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                One Piece
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                11
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Killua Zoldyck
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Hunter x Hunter
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                12
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Itachi Uchiha
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Naruto
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                13
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Saitama
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                One Punch Man
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                14
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Vegeta
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Dragon Ball
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                15
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Satoru Gojo
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Jujutsu Kaisen
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                16
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Yusuke Urameshi
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Yu Yu Hakusho
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                17
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Spike Spiegel
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Cowboy Bebop
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                18
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                L Lawliet
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Death Note
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                19
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Hisoka Morow
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Hunter x Hunter
+              </td>
+            </tr>
+            <tr class="text-gray-500">
+              <th
+                class="border-t-0 px-4 text-base text-gray-900 font-normal whitespace-nowrap p-4 text-center"
+              >
+                20
+              </th>
+              <td
+                class="anime-char text-transparent border-t-0 px-4 text-base font-medium text-green-700 whitespace-nowrap p-4"
+              >
+                Yuki Judai
+              </td>
+              <td
+                class="border-t-0 px-4 text-base font-medium text-gray-900 whitespace-nowrap p-4"
+              >
+                Yu-Gi-Oh! GX
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
