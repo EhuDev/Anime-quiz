@@ -3,6 +3,7 @@ const animeChars = document.querySelectorAll(".anime-char");
 const timer = document.querySelector("#timer");
 const displayScore = document.querySelector("#score");
 const enterButton = displayChar.nextElementSibling;
+
 let score = 0;
 let timerInterval;
 
@@ -24,6 +25,7 @@ const inputChar = () => {
   });
   if (found) {
     score++;
+    displayScore.style.color = "white";
     displayScore.textContent = `${score}`;
   }
   if (!timerInterval) {
@@ -34,10 +36,11 @@ const inputChar = () => {
 };
 
 const timerCount = () => {
-  let count = 60;
+  let count = 300;
   timerInterval = setInterval(() => {
     const minutes = Math.floor(count / 60);
     const seconds = count % 60;
+    timer.style.color = "red";
     timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     if (count === 0) {
       clearInterval(timerInterval);
@@ -52,7 +55,7 @@ displayChar.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     enterButton.click();
-    // Start the timer if it hasn't started yet
+
     if (!timerInterval) {
       timerCount();
     }
